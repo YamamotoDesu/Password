@@ -11,6 +11,8 @@
 		7BC5D7BC28CC27C8003F9A7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC5D7BB28CC27C8003F9A7D /* ViewController.swift */; };
 		7BC5D7C128CC27CF003F9A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC5D7C028CC27CF003F9A7D /* Assets.xcassets */; };
 		7BC5D7C428CC27CF003F9A7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BC5D7C228CC27CF003F9A7D /* LaunchScreen.storyboard */; };
+		7BC5D7CD28CC34C8003F9A7D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BC5D7CC28CC34C8003F9A7D /* Storyboard.storyboard */; };
+		7BC5D7CF28CC36BF003F9A7D /* PasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC5D7CE28CC36BF003F9A7D /* PasswordTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		7BC5D7C028CC27CF003F9A7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BC5D7C328CC27CF003F9A7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BC5D7C528CC27CF003F9A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BC5D7CC28CC34C8003F9A7D /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		7BC5D7CE28CC36BF003F9A7D /* PasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,7 @@
 		7BC5D7AB28CC27C8003F9A7D = {
 			isa = PBXGroup;
 			children = (
+				7BC5D7CC28CC34C8003F9A7D /* Storyboard.storyboard */,
 				7BC5D7B628CC27C8003F9A7D /* Password */,
 				7BC5D7B528CC27C8003F9A7D /* Products */,
 			);
@@ -55,6 +60,7 @@
 				7BC5D7CB28CC286F003F9A7D /* Files */,
 				7BC5D7B728CC27C8003F9A7D /* AppDelegate.swift */,
 				7BC5D7BB28CC27C8003F9A7D /* ViewController.swift */,
+				7BC5D7CE28CC36BF003F9A7D /* PasswordTextView.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -129,6 +135,7 @@
 			files = (
 				7BC5D7C428CC27CF003F9A7D /* LaunchScreen.storyboard in Resources */,
 				7BC5D7C128CC27CF003F9A7D /* Assets.xcassets in Resources */,
+				7BC5D7CD28CC34C8003F9A7D /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BC5D7BC28CC27C8003F9A7D /* ViewController.swift in Sources */,
+				7BC5D7CF28CC36BF003F9A7D /* PasswordTextView.swift in Sources */,
 				7BC5D7B828CC27C8003F9A7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
