@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B20812D28CC99B300D01699 /* PasswordCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B20812C28CC99B300D01699 /* PasswordCriteria.swift */; };
 		7BC5D7B828CC27C8003F9A7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC5D7B728CC27C8003F9A7D /* AppDelegate.swift */; };
 		7BC5D7BC28CC27C8003F9A7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC5D7BB28CC27C8003F9A7D /* ViewController.swift */; };
 		7BC5D7C128CC27CF003F9A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC5D7C028CC27CF003F9A7D /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B20812C28CC99B300D01699 /* PasswordCriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteria.swift; sourceTree = "<group>"; };
 		7BC5D7B428CC27C8003F9A7D /* Password.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Password.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BC5D7B728CC27C8003F9A7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BC5D7BB28CC27C8003F9A7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				7BC5D7D128CC5E16003F9A7D /* PasswordCriteriaView.swift */,
 				7BC5D7D328CC6E55003F9A7D /* PasswordStatusView.swift */,
+				7B20812C28CC99B300D01699 /* PasswordCriteria.swift */,
 			);
 			name = PasswordStatusView;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BC5D7BC28CC27C8003F9A7D /* ViewController.swift in Sources */,
+				7B20812D28CC99B300D01699 /* PasswordCriteria.swift in Sources */,
 				7BC5D7CF28CC36BF003F9A7D /* PasswordTextView.swift in Sources */,
 				7BC5D7D228CC5E16003F9A7D /* PasswordCriteriaView.swift in Sources */,
 				7BC5D7D428CC6E55003F9A7D /* PasswordStatusView.swift in Sources */,
