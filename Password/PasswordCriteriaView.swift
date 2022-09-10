@@ -65,6 +65,8 @@ extension PasswordCriteriaView {
         label.textColor = .secondaryLabel
 
         stackView.addArrangedSubview(label)
+        
+        imageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .vertical)
     }
     
     func layout() {
