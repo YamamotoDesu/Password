@@ -412,4 +412,85 @@ extension PasswordStatusView {
 
 ```
 
+## Inline Interactions
+
+<img width="564" alt="スクリーンショット 2022-09-10 19 28 53" src="https://user-images.githubusercontent.com/47273077/189479375-69c38647-7d6e-417b-82b2-07ae962a5b99.gif">
+
+![image](https://user-images.githubusercontent.com/47273077/189479462-28778b5a-fd6c-4f67-9258-6cf4641d7b06.png)
+
+
+```swift
+import Foundation
+
+struct PasswordCriteria {
+    static func lengthCriteriaMet(_ text: String) -> Bool {
+        text.count >= 8 && text.count <= 32
+    }
+    
+    static func noSpaceCriteriaMet(_ text: String) -> Bool {
+        text.rangeOfCharacter(from: NSCharacterSet.whitespaces) == nil
+    }
+        
+    static func lengthAndNoSpaceMet(_ text: String) -> Bool {
+        lengthCriteriaMet(text) && noSpaceCriteriaMet(text)
+    }
+    
+    static func uppercaseMet(_ text: String) -> Bool {
+        text.range(of: "[A-Z]+", options: .regularExpression) != nil
+    }
+    
+    static func lowercaseMet(_ text: String) -> Bool {
+        text.range(of: "[a-z]+", options: .regularExpression) != nil
+    }
+
+    static func digitMet(_ text: String) -> Bool {
+        text.range(of: "[0-9]+", options: .regularExpression) != nil
+    }
+    
+    static func specialCharacterMet(_ text: String) -> Bool {
+        // regex escaped @:?!()$#,.\/
+        return text.range(of: "[@:?!()$#,./\\\\]+", options: .regularExpression) != nil
+    }
+}
+```
+
+```swift
+// MARK: Actions
+extension PasswordStatusView {
+    func updateDisplay(_ text: String) {
+        let lengthAndNoSpaceMet = PasswordCriteria.lengthAndNoSpaceMet(text)
+        let uppercaseMet = PasswordCriteria.uppercaseMet(text)
+        let lowercaseMet = PasswordCriteria.lowercaseMet(text)
+        let digitMet = PasswordCriteria.digitMet(text)
+        let specialCharacterMet = PasswordCriteria.specialCharacterMet(text)
+        
+        if shouldResetCriteria {
+            // Inline validation (✅ or ⚪️)
+            lengthAndNoSpaceMet
+                ? lengthCriteriaView.isCriteriaMet = true
+                : lengthCriteriaView.reset()
+            
+            uppercaseMet
+                ? uppercaseCriteriaView.isCriteriaMet = true
+                : uppercaseCriteriaView.reset()
+            
+            lowercaseMet
+                ? lowerCaseCriteriaView.isCriteriaMet = true
+                : lowerCaseCriteriaView.reset()
+
+            digitMet
+                ? digitCriteriaView.isCriteriaMet = true
+                : digitCriteriaView.reset()
+            
+            specialCharacterMet
+                ? specialCharacterCriteriaView.isCriteriaMet = true
+                : specialCharacterCriteriaView.reset()
+        }
+    }
+}
+```
+
+
+
+
 
