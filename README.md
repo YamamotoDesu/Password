@@ -490,7 +490,90 @@ extension PasswordStatusView {
 }
 ```
 
+## Dealing with Keyboards
 
 
+### Problems
+<img width="564" alt="スクリーンショット 2022-09-11 12 54 05" src="https://user-images.githubusercontent.com/47273077/189511689-b1adbe10-adef-4040-a2a2-c26779e99ea5.png">
+
+<img width="564" alt="スクリーンショット 2022-09-11 12 54 05" src="https://user-images.githubusercontent.com/47273077/189511717-cb59f3c2-aaec-4e35-9055-a0e7da14d9e5.gif">
+
+
+### Solutions
+
+```swift
+
+    private func setupKeyboardHiding() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(sender: NSNotification) {
+        view.frame.origin.y = view.frame.origin.y - 200
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+
+```
+
+### Problems
+<img width="564" alt="スクリーンショット 2022-09-11 12 54 05" src="https://user-images.githubusercontent.com/47273077/189511752-726b7335-1306-4b7f-b1d7-3884aaae1e5a.gif">
+
+### Solution
+<img width="564" alt="スクリーンショット 2022-09-11 12 54 05" src="https://user-images.githubusercontent.com/47273077/189511752-726b7335-1306-4b7f-b1d7-3884aaae1e5a.gif">
+
+```swift
+
+import UIKit
+
+extension UIResponder {
+
+    private struct Static {
+        static weak var responder: UIResponder?
+    }
+
+    /// Finds the current first responder
+    /// - Returns: the current UIResponder if it exists
+    static func currentFirst() -> UIResponder? {
+        Static.responder = nil
+        UIApplication.shared.sendAction(#selector(UIResponder._trap), to: nil, from: nil, for: nil)
+        return Static.responder
+    }
+
+    @objc private func _trap() {
+        Static.responder = self
+    }
+}
+```
+
+```swift
+    @objc func keyboardWillShow(sender: NSNotification) {
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
+
+        print("foo - userInfo: \(userInfo)")
+        print("foo - keyboardFrame: \(keyboardFrame)")
+        print("foo - currentTextField: \(currentTextField)")
+        
+        
+        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+        let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
+
+        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+
+        // if textField bottom is below keyboard bottom - bump the frame up
+        if textFieldBottomY > keyboardTopY {
+            let textBoxY = convertedTextFieldFrame.origin.y
+            let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+            view.frame.origin.y = newFrameY
+        }
+        
+        print("foo - currentTextFieldFrame: \(currentTextField.frame)")
+        print("foo - convertedTextFieldFrame: \(convertedTextFieldFrame)")
+    }
+```
 
 
