@@ -490,7 +490,34 @@ extension PasswordStatusView {
 }
 ```
 
+## Dealing with Keyboards
 
+
+### Problems
+<img width="564" alt="スクリーンショット 2022-09-11 12 54 05" src="https://user-images.githubusercontent.com/47273077/189511689-b1adbe10-adef-4040-a2a2-c26779e99ea5.png">
+
+<img width="564" alt="スクリーンショット 2022-09-11 12 54 05" src="https://user-images.githubusercontent.com/47273077/189511717-cb59f3c2-aaec-4e35-9055-a0e7da14d9e5.gif">
+
+
+### Solutions
+<img width="564" alt="スクリーンショット 2022-09-11 12 54 05" src="https://user-images.githubusercontent.com/47273077/189511752-726b7335-1306-4b7f-b1d7-3884aaae1e5a.gif">
+
+```swift
+
+    private func setupKeyboardHiding() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(sender: NSNotification) {
+        view.frame.origin.y = view.frame.origin.y - 200
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+
+```
 
 
 
